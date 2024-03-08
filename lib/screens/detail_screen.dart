@@ -11,49 +11,53 @@ class DetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(movie.title),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network('https://image.tmdb.org/t/p/w500${movie.backdropPath}',
-            height: 300,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 20),
-          Text('Overview', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-          SizedBox(height: 10),
-          Text(movie.overview),
-          SizedBox(height: 20),
-          Row(
+      body: SingleChildScrollView(
+        child: Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.calendar_month,
-                color: Colors.blue,
+              Image.network('https://image.tmdb.org/t/p/w500${movie.backdropPath}',
+                height: 300,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
-              SizedBox(width: 10),
-              Text(
-                'Release Date :',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              SizedBox(height: 20),
+              Text('Overview', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+              SizedBox(height: 10),
+              Text(movie.overview),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  Icon(Icons.calendar_month,
+                    color: Colors.blue,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    'Release Date :',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(width: 10),
+                  Text(movie.releaseDate),
+                ],
               ),
-              SizedBox(width: 10),
-              Text(movie.releaseDate),
+              Row(
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    'Rating',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(width: 10),
+                  Text(movie.voteAverage.toString()),
+                ],
+              ),
             ],
           ),
-          Row(
-            children: [
-              Icon(
-                Icons.star,
-                color: Colors.amber,
-              ),
-              SizedBox(width: 10),
-              Text(
-                'Rating',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(width: 10),
-              Text(movie.voteAverage.toString()),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }
