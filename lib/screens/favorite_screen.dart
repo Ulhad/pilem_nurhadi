@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pilem/models/movie.dart';
+
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
   @override
